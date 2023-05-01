@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Lab2Test.Models.Course>
+@{
+    ViewData["Title"] = "EditCourseName";
+}
+
+@*Distincts if there is multiplies*@
+@{
+    var distinctCourses = Model.Select(x => x.CourseName).Distinct();
+}
+
+<h1>These are the courses you are able to edit</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var courseName in distinctCourses)
+        {
+            <tr>
+                <td>
+                    @courseName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+            <br />
+            <h3>Please choose which subject you want to edit from the list above.</h3>
+            <br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCourseNameInputs" method="post">
+
+            <div class="form-group">
+                <label for="courseName" class="control-label">Course Name:</label>
+                <select name="courseName" class="form-control" required>
+                    <option value="">Select a course to edit...</option>
+                    @foreach (var course in Model.Select(c => c.CourseName).Distinct())  @*Distincts if there is multiplies*@
+                    {
+                        <option value="@course">@course</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="newCourseName" class="control-label">New Course Name:</label>
+                <input name="newCourseName" class="form-control" id="newCourseName" placeholder="New Course Name" required />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+

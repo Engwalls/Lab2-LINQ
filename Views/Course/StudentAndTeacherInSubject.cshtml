@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Lab2Test.Models.Student>
+
+@{
+    ViewData["Title"] = "Students in Programming 1";
+}
+
+<h1>Students in Programming 1</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses.FirstOrDefault(c => c.CourseName == "Programming 1").Teachers.TeacherFullName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => student.StudFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.Courses.FirstOrDefault(c => c.CourseName == "Programming 1").Teachers.TeacherFullName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

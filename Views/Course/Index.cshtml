@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Lab2Test.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All courses and their unique ID's</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.StudFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teachers.TeacherFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classes.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classes.ClassId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Students.StudFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teachers.TeacherFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classes.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classes.ClassId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CourseId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create">Create New Course</a>
+</p>

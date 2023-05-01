@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Lab2Test.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All students and their unique ID's</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudLastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudLastName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create">Create New Student</a>
+</p>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Lab2Test.Models.Course>
+
+@{
+    ViewData["Title"] = "EditCourseNameInputs";
+}
+
+<h1>New information has been added</h1>
+<h4>Your updated table</h4>
+
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Select(m => m.CourseName).Distinct())  @*Distincts if there is multiplies*@
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="EditCourseName">Back to List</a>
+</div>
+

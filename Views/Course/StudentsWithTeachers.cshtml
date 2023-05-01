@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Lab2Test.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Here is every student with their respective teacher in each subject.</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.StudFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teachers.TeacherFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Students.StudFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teachers.TeacherFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,55 @@
+﻿
+@model IEnumerable<Teacher>
+
+
+<h1>Here you can edit teacher names and the subject the teacher has</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Teacher Name</th>
+            <th>Course Name</th>
+            <th></th> <!-- en tom kolumn för att placera knappen för att spara kursnamn -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var teacher in Model)
+        {
+            <tr>
+                <td>
+                    <form asp-action="EditTeacherName" method="post">
+                        <input type="hidden" name="teacherId" value="@teacher.TeacherId" />
+                        <input type="text" name="newTeacherName" value="@teacher.TeacherFullName" />
+                        <button type="submit">Save</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="EditCourseNameInputs" method="post">
+                        <input type="hidden" name="courseName" value="@teacher.Courses.First().CourseName" /> <!-- här hämtas kursnamnet från första kursen för den aktuella läraren -->
+                        <input type="text" name="newCourseName" value="@teacher.Courses.First().CourseName" />
+                        <button type="submit">Save</button>
+                    </form>
+                </td>
+                <td></td>
+            </tr>
+            @foreach (var course in teacher.Courses.Skip(1)) 
+            {
+                <tr>
+                    <td></td>
+                    <td>
+                        <form asp-action="EditCourseNameInputs" method="post">
+                            <input type="hidden" name="courseName" value="@course.CourseName" />
+                            <input type="text" name="newCourseName" value="@course.CourseName" />
+                            <button type="submit">Save</button>
+                        </form>
+                    </td>
+                    <td></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+

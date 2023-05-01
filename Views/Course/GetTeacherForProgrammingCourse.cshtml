@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Lab2Test.Models.Teacher>
+
+
+<h1>Teachers in Programming 1</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherId)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
